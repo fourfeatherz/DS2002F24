@@ -1,0 +1,72 @@
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the CSV file into a pandas DataFrame
+file_path = '/mnt/data/acc_players-2324F.csv'
+df = pd.read_csv(file_path)
+
+# Renaming columns for easier access
+df.columns = ['Rk', 'Player', 'Class', 'Pos', 'School', 'G', 'MP', 'TRB', 'AST', 'STL',
+              'BLK', 'TOV', 'PF', 'PTS', 'FG%', '2P%', '3P%', 'FT%', 'PER', 'WS', 'BPM']
+
+# 1. Total Points Scored by All Players
+total_points = df['PTS'].astype(float).sum()
+print(f"Total points scored by all players: {total_points}")
+
+# 2. Player with the Most Minutes Played
+most_minutes_player = df.loc[df['MP'].astype(float).idxmax(), 'Player']
+print(f"Player with the most minutes: {most_minutes_player}")
+
+# 3. Top 5 Players by Total Rebounds
+top_5_rebounds = df[['Player', 'TRB']].sort_values(by='TRB', ascending=False).head(5)
+print("Top 5 Players by Total Rebounds:")
+print(top_5_rebounds)
+
+# 4. Filtering Players with More Than 500 Minutes
+filtered_df = df[df['MP'].astype(float) > 500]
+
+# 5. Player with the Highest Assists from Filtered Data
+highest_assists_player = filtered_df.loc[filtered_df['AST'].astype(float).idxmax(), 'Player']
+print(f"Player with the highest assists (filtered): {highest_assists_player}")
+
+# 6. Top 3 Assist Leaders and Shot Blockers
+top_3_assists = df[['Player', 'AST']].sort_values(by='AST', ascending=False).head(3)
+print("Top 3 Assist Leaders:")
+print(top_3_assists)
+
+top_3_blockers = df[['Player', 'BLK']].sort_values(by='BLK', ascending=False).head(3)
+print("Top 3 Shot Blockers:")
+print(top_3_blockers)
+
+# 7. Group by School for Total Points and Assists
+school_points = df.groupby('School')['PTS'].sum().sort_values(ascending=False)
+school_assists = df.groupby('School')['AST'].sum()
+
+# Display top 3 schools by total points
+top_3_schools = school_points.head(3)
+print("Top 3 Schools by Total Points:")
+print(top_3_schools)
+
+# Extra Credit: Bar Chart and Correlation Analysis
+# Bar chart of top 5 players by total points
+top_5_points = df[['Player', 'PTS']].sort_values(by='PTS', ascending=False).head(5)
+plt.bar(top_5_points['Player'], top_5_points['PTS'])
+plt.xlabel('Player')
+plt.ylabel('Total Points')
+plt.title('Top 5 Players by Total Points')
+plt.show()
+
+# Correlation between FG% and WS
+df['FG%'] = df['FG%'].astype(float)
+df['WS'] = df['WS'].astype(float)
+correlation = df[['FG%', 'WS']].corr().iloc[0, 1]
+
+# Scatter plot of FG% vs WS
+plt.scatter(df['FG%'], df['WS'])
+plt.xlabel('Field Goal Percentage (FG%)')
+plt.ylabel('Win Shares (WS)')
+plt.title('Correlation Between FG% and WS')
+plt.show()
+
+print(f"Correlation coefficient between FG% and WS: {correlation}")
