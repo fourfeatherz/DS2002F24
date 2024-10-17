@@ -94,7 +94,7 @@
 
 **Oct 19 (Thurs):**
 - **Hands-On:** Complex Data Analysis
-- **Activity:** Perform advanced data manipulation and analysis using Pandas
+- **Activity:** Perform advanced data manipulation and analysis using Pandas (Read Chapters 5-7)
 - **Reading:**[ Data Aggregation and Grouping with Pandas](https://learning.oreilly.com/library/view/pandas-workout/9781617299728/)
 
 ## Week 9 (Oct 22 - Oct 24): Data Project Development
