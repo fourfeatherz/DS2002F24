@@ -87,15 +87,15 @@
 
 ## Week 8 (Oct 17 - Oct 19): Advanced Data Handling and Analysis in Python
 
-**Oct 17 (Tues):**
+**Oct 17 (Thur):**
 - **Lecture:** Advanced Data Aggregation Techniques
 - **Content:** Grouping, merging, and joining DataFrames
-- **Reading:** Advanced Pandas Techniques
+- **Reading:** [Advanced Pandas Techniques](https://learning.oreilly.com/library/view/pandas-workout/9781617299728/)
 
 **Oct 19 (Thurs):**
 - **Hands-On:** Complex Data Analysis
-- **Activity:** Perform advanced data manipulation and analysis using Pandas
-- **Reading:** Data Aggregation and Grouping with Pandas
+- **Activity:** Perform advanced data manipulation and analysis using Pandas (Read Chapters 5-7)
+- **Reading:**[ Data Aggregation and Grouping with Pandas](https://learning.oreilly.com/library/view/pandas-workout/9781617299728/)
 
 ## Week 9 (Oct 22 - Oct 24): Data Project Development
 
